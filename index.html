@@ -1,71 +1,133 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mi Clóset Virtual Mibes</title>
   <style>
-    body { font-family: Arial; margin: 0; padding: 0; background: #f4f4f4; }
-    header, nav, section { padding: 20px; }
-    header { background: #2c3e50; color: white; text-align: center; }
-    nav ul { list-style: none; display: flex; justify-content: center; padding: 0; background: #3498db; margin: 0; }
-    nav ul li { margin: 0 15px; }
-    nav ul li a { color: white; text-decoration: none; font-weight: bold; }
-    .productos-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-    .producto { background: white; padding: 10px; border-radius: 5px; width: 250px; box-shadow: 0 0 5px #ccc; text-align: center; }
-    .producto img { width: 100%; height: 300px; object-fit: cover; border-radius: 5px; }
-    .producto h3 { margin: 10px 0 5px; }
-    .producto p { margin: 0; color: #27ae60; font-weight: bold; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+    }
+    header, nav, section {
+      padding: 20px;
+    }
+    header {
+      background: #2c3e50;
+      color: white;
+      text-align: center;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      padding: 0;
+      background: #3498db;
+      margin: 0;
+    }
+    nav ul li {
+      margin: 0 15px;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .productos-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+    .producto {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      width: 250px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .producto:hover {
+      transform: translateY(-5px);
+    }
+    .producto img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .producto h3 {
+      margin: 10px 0;
+      color: #333;
+    }
+    .producto .precio {
+      color: #27ae60;
+      font-weight: bold;
+      font-size: 18px;
+      margin: 10px 0;
+    }
+    .controles-cantidad {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 10px 0;
+    }
+    .controles-cantidad button {
+      background: #3498db;
+      color: white;
+      border: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .controles-cantidad input {
+      width: 50px;
+      text-align: center;
+      margin: 0 10px;
+      padding: 5px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
     .boton-compra {
       background: #2ecc71;
       color: white;
       border: none;
-      padding: 8px 15px;
-      margin-top: 10px;
+      padding: 10px 20px;
       border-radius: 4px;
       cursor: pointer;
       font-weight: bold;
+      width: 100%;
       transition: background 0.3s;
     }
     .boton-compra:hover {
       background: #27ae60;
     }
-    .cantidad {
-      width: 50px;
-      padding: 5px;
-      margin-top: 5px;
-      text-align: center;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-    }
-    .boton-volver { 
-      display: block; 
-      width: max-content; 
-      margin: 40px auto; 
-      background: #e74c3c; 
-      color: white; 
-      padding: 10px 20px; 
-      text-decoration: none; 
-      border-radius: 5px; 
-    }
-    .boton-volver:hover {
-      background: #c0392b;
-    }
     #carrito {
       position: fixed;
-      bottom: 20px;
+      top: 20px;
       right: 20px;
       background: white;
-      padding: 15px;
+      padding: 20px;
       border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-      z-index: 1000;
-      max-height: 60vh;
-      overflow-y: auto;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
       width: 300px;
+      max-height: 80vh;
+      overflow-y: auto;
+      z-index: 1000;
     }
     #carrito h3 {
       margin-top: 0;
+      color: #2c3e50;
       border-bottom: 1px solid #eee;
       padding-bottom: 10px;
     }
@@ -77,53 +139,75 @@
       padding-bottom: 10px;
       border-bottom: 1px dashed #eee;
     }
+    .item-info {
+      flex-grow: 1;
+    }
+    .item-carrito .nombre {
+      font-weight: bold;
+    }
+    .item-carrito .precio {
+      color: #27ae60;
+    }
+    .item-carrito .cantidad {
+      color: #7f8c8d;
+      font-size: 14px;
+    }
     .boton-eliminar {
       background: #e74c3c;
       color: white;
       border: none;
-      padding: 3px 8px;
-      border-radius: 3px;
+      padding: 5px 10px;
+      border-radius: 4px;
       cursor: pointer;
-      font-size: 12px;
-    }
-    .boton-eliminar:hover {
-      background: #c0392b;
+      margin-left: 10px;
     }
     #total-carrito {
       font-weight: bold;
       font-size: 18px;
-      margin-top: 15px;
+      margin: 15px 0;
+      text-align: right;
     }
     #realizar-compra {
       background: #3498db;
       color: white;
       border: none;
-      padding: 10px 15px;
+      padding: 12px;
       border-radius: 4px;
       cursor: pointer;
       font-weight: bold;
       width: 100%;
-      margin-top: 10px;
+      transition: background 0.3s;
     }
     #realizar-compra:hover {
       background: #2980b9;
     }
-    .controles-cantidad {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-    .controles-cantidad button {
-      background: #3498db;
+    .boton-volver {
+      display: block;
+      width: max-content;
+      margin: 40px auto;
+      background: #e74c3c;
       color: white;
-      border: none;
-      width: 25px;
-      height: 25px;
+      padding: 12px 25px;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .boton-volver:hover {
+      background: #c0392b;
+    }
+    #contador-carrito {
+      background: #e74c3c;
+      color: white;
+      padding: 3px 8px;
       border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      font-size: 14px;
+      margin-left: 5px;
+    }
+    .carrito-vacio {
+      color: #7f8c8d;
+      text-align: center;
+      padding: 20px 0;
     }
   </style>
 </head>
@@ -150,233 +234,82 @@
 <section id="productos">
   <h2>Catálogo de Ropa</h2>
   <div class="productos-container">
-
+    <!-- Producto 1 -->
     <div class="producto">
-      <img src="https://58532.cdn.simplo7.net/static/58532/sku/feminino-camisa-feminina-social-manga-longa-listrada-1737741301685.jpg">
+      <img src="https://58532.cdn.simplo7.net/static/58532/sku/feminino-camisa-feminina-social-manga-longa-listrada-1737741301685.jpg" alt="Camisa Mujer">
       <h3>Camisa Mujer</h3>
-      <p>$160.00 MXN</p>
+      <div class="precio">$160.00 MXN</div>
       <div class="controles-cantidad">
         <button onclick="this.nextElementSibling.stepDown()">-</button>
-        <input type="number" class="cantidad" min="1" value="1">
+        <input type="number" min="1" value="1" class="cantidad-producto">
         <button onclick="this.previousElementSibling.stepUp()">+</button>
       </div>
       <button class="boton-compra" onclick="agregarAlCarrito('Camisa Mujer', 160, this)">Agregar al carrito</button>
     </div>
+    
+    <!-- Producto 2 -->
     <div class="producto">
-      <img src="https://www.elpalaciodehierro.com/dw/image/v2/BDKB_PRD/on/demandware.static/-/Sites-palacio-master-catalog/default/dw824c1534/images/40523044/negro/large/40523044_x1.jpg?sw=960&sh=1152" alt="Blusa de Encaje Negra">
+      <img src="https://www.elpalaciodehierro.com/dw/image/v2/BDKB_PRD/on/demandware.static/-/Sites-palacio-master-catalog/default/dw824c1534/images/40523044/negro/large/40523044_x1.jpg?sw=960&sh=1152" alt="Chamarra">
       <h3>Chamarra</h3>
-      <p>$170.00 MXN</p>
+      <div class="precio">$170.00 MXN</div>
       <div class="controles-cantidad">
         <button onclick="this.nextElementSibling.stepDown()">-</button>
-        <input type="number" class="cantidad" min="1" value="1">
+        <input type="number" min="1" value="1" class="cantidad-producto">
         <button onclick="this.previousElementSibling.stepUp()">+</button>
       </div>
       <button class="boton-compra" onclick="agregarAlCarrito('Chamarra', 170, this)">Agregar al carrito</button>
     </div>
+    
+    <!-- Producto 3 -->
     <div class="producto">
-      <img src="https://www.pimkie.fr/cdn/shop/files/142495_A90G09_portrait_HD_2_15ea0ffc-7f66-40f0-9ab3-06145247844e.jpg?v=1751257260&width=640" alt="Pantalón de Mezclilla Azul Claro">
+      <img src="https://www.pimkie.fr/cdn/shop/files/142495_A90G09_portrait_HD_2_15ea0ffc-7f66-40f0-9ab3-06145247844e.jpg?v=1751257260&width=640" alt="Pantalón">
       <h3>Pantalón</h3>
-      <p>$180.00 MXN</p>
+      <div class="precio">$180.00 MXN</div>
       <div class="controles-cantidad">
         <button onclick="this.nextElementSibling.stepDown()">-</button>
-        <input type="number" class="cantidad" min="1" value="1">
+        <input type="number" min="1" value="1" class="cantidad-producto">
         <button onclick="this.previousElementSibling.stepUp()">+</button>
       </div>
       <button class="boton-compra" onclick="agregarAlCarrito('Pantalón', 180, this)">Agregar al carrito</button>
     </div>
-
+    
+    <!-- Producto 4 -->
     <div class="producto">
       <img src="https://st.mngbcn.com/rcs/pics/static/T4/fotos/S20/47095876_88.jpg?ts=1680506727470&imwidth=337&imdensity=2&impolicy=featured" alt="Vestido Largo de Fiesta">
       <h3>Vestido Largo de Fiesta</h3>
-      <p>$190.00 MXN</p>
+      <div class="precio">$190.00 MXN</div>
       <div class="controles-cantidad">
         <button onclick="this.nextElementSibling.stepDown()">-</button>
-        <input type="number" class="cantidad" min="1" value="1">
+        <input type="number" min="1" value="1" class="cantidad-producto">
         <button onclick="this.previousElementSibling.stepUp()">+</button>
       </div>
       <button class="boton-compra" onclick="agregarAlCarrito('Vestido Largo de Fiesta', 190, this)">Agregar al carrito</button>
     </div>
+    
+    <!-- Producto 5 -->
     <div class="producto">
       <img src="https://www.elpalaciodehierro.com/on/demandware.static/-/Sites-palacio-master-catalog/default/dwcb48ecd7/images/40608277/azulclaro/large/40608278_AZULCLARO_x1.jpg" alt="Chamarra de Mezclilla Clásica">
       <h3>Chamarra de Mezclilla Clásica</h3>
-      <p>$200.00 MXN</p>
+      <div class="precio">$200.00 MXN</div>
       <div class="controles-cantidad">
         <button onclick="this.nextElementSibling.stepDown()">-</button>
-        <input type="number" class="cantidad" min="1" value="1">
+        <input type="number" min="1" value="1" class="cantidad-producto">
         <button onclick="this.previousElementSibling.stepUp()">+</button>
       </div>
       <button class="boton-compra" onclick="agregarAlCarrito('Chamarra de Mezclilla Clásica', 200, this)">Agregar al carrito</button>
     </div>
+    
+    <!-- Producto 6 -->
     <div class="producto">
-      <img src="https://tse1.mm.bing.net/th/id/OIP.T6-zt9vj_1SA5i9ADDPm9QHaLH?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Falda Plisada Rosa">
+      <img src="https://tse1.mm.bing.net/th/id/OIP.T6-zt9vj_1SA5i9ADDPm9QHaLH?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Vestido Negro">
       <h3>Vestido Negro</h3>
-      <p>$210.00 MXN</p>
+      <div class="precio">$210.00 MXN</div>
       <div class="controles-cantidad">
         <button onclick="this.nextElementSibling.stepDown()">-</button>
-        <input type="number" class="cantidad" min="1" value="1">
+        <input type="number" min="1" value="1" class="cantidad-producto">
         <button onclick="this.previousElementSibling.stepUp()">+</button>
       </div>
       <button class="boton-compra" onclick="agregarAlCarrito('Vestido Negro', 210, this)">Agregar al carrito</button>
-    </div>
-
-    <div class="producto">
-      <img src="https://i.pinimg.com/736x/c8/5e/af/c85eaf31f6c2c24e574a705996312a5e.jpg" alt="Crop Top con Estampado Floral">
-      <h3>Top Negro</h3>
-      <p>$220.00 MXN</p>
-      <div class="controles-cantidad">
-        <button onclick="this.nextElementSibling.stepDown()">-</button>
-        <input type="number" class="cantidad" min="1" value="1">
-        <button onclick="this.previousElementSibling.stepUp()">+</button>
-      </div>
-      <button class="boton-compra" onclick="agregarAlCarrito('Top Negro', 220, this)">Agregar al carrito</button>
-    </div>
-    <div class="producto">
-      <img src="https://th.bing.com/th/id/R.8d6588b658cabf9c51ad2fa0b7d25094?rik=mZY8PU9dmq%2bvKA&riu=http%3a%2f%2fwww.culturasaludable.mx%2fsites%2fdefault%2ffiles%2farticulos%2f2022%2fEne%2ftenis.jpg&ehk=bci%2bOpU7XjUf1br6qG8yXw3cB0KpfjBztxBGReAjbPs%3d&risl=&pid=ImgRaw&r=0" alt="Joggers Deportivos Unisex">
-      <h3>Tenis</h3>
-      <p>$230.00 MXN</p>
-      <div class="controles-cantidad">
-        <button onclick="this.nextElementSibling.stepDown()">-</button>
-        <input type="number" class="cantidad" min="1" value="1">
-        <button onclick="this.previousElementSibling.stepUp()">+</button>
-      </div>
-      <button class="boton-compra" onclick="agregarAlCarrito('Tenis', 230, this)">Agregar al carrito</button>
-    </div>
-    <div class="producto">
-      <img src="https://dpjye2wk9gi5z.cloudfront.net/wcsstore/ExtendedSitesCatalogAssetStore/images/catalog/zoom/4006436-0901V1.jpg" alt="Suéter Tejido de Lana">
-      <h3>Gorras</h3>
-      <p>$240.00 MXN</p>
-      <div class="controles-cantidad">
-        <button onclick="this.nextElementSibling.stepDown()">-</button>
-        <input type="number" class="cantidad" min="1" value="1">
-        <button onclick="this.previousElementSibling.stepUp()">+</button>
-      </div>
-      <button class="boton-compra" onclick="agregarAlCarrito('Gorras', 240, this)">Agregar al carrito</button>
-    </div>
-
-    <div class="producto">
-      <img src="https://www.unitam.com/media/catalog/product/cache/8bf5895435943fcf2da0fe7d650ab2c4/P/A/PAISCR0A35_frente.jpg" alt="Camiseta Básica de Algodón">
-      <h3>Pantalón Hombre</h3>
-      <p>$250.00 MXN</p>
-      <div class="controles-cantidad">
-        <button onclick="this.nextElementSibling.stepDown()">-</button>
-        <input type="number" class="cantidad" min="1" value="1">
-        <button onclick="this.previousElementSibling.stepUp()">+</button>
-      </div>
-      <button class="boton-compra" onclick="agregarAlCarrito('Pantalón Hombre', 250, this)">Agregar al carrito</button>
-    </div>
-    <div class="producto">
-      <img src="https://lyxcostarica.com/cdn/shop/files/ColecciondeanillosGoldNatureColorMaterial-Chapadodeoro14KPrecios-10_000c-u_Setde4anillos28_000.Enviosatodoelpais_1.jpg?v=1713231018&width=533" alt="Blazer Formal para Dama">
-      <h3>Anillos</h3>
-      <p>$260.00 MXN</p>
-      <div class="controles-cantidad">
-        <button onclick="this.nextElementSibling.stepDown()">-</button>
-        <input type="number" class="cantidad" min="1" value="1">
-        <button onclick="this.previousElementSibling.stepUp()">+</button>
-      </div>
-      <button class="boton-compra" onclick="agregarAlCarrito('Anillos', 260, this)">Agregar al carrito</button>
-    </div>
-    <div class="producto">
-      <img src="https://tse2.mm.bing.net/th/id/OIP.Xl99VCk5h6cPRZAVwpMn6wHaJ4?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Pantalón Cargo Verde Militar">
-      <h3>Bolsa Rosa</h3>
-      <p>$270.00 MXN</p>
-      <div class="controles-cantidad">
-        <button onclick="this.nextElementSibling.stepDown()">-</button>
-        <input type="number" class="cantidad" min="1" value="1">
-        <button onclick="this.previousElementSibling.stepUp()">+</button>
-      </div>
-      <button class="boton-compra" onclick="agregarAlCarrito('Bolsa Rosa', 270, this)">Agregar al carrito</button>
-    </div>
-
-    <div class="producto">
-      <img src="https://i.pinimg.com/originals/14/7d/20/147d20f6f3ba9c38ed4b5cbdc04987f9.jpg" alt="Camisa a Cuadros de Franela">
-      <h3>Camisa a Cuadros </h3>
-      <p>$280.00 MXN</p>
-      <div class="controles-cantidad">
-        <button onclick="this.nextElementSibling.stepDown()">-</button>
-        <input type="number" class="cantidad" min="1" value="1">
-        <button onclick="this.previousElementSibling.stepUp()">+</button>
-      </div>
-      <button class="boton-compra" onclick="agregarAlCarrito('Camisa a Cuadros', 280, this)">Agregar al carrito</button>
-    </div>
-    <div class="producto">
-      <img src="https://images.tcdn.com.br/img/img_prod/793630/vestido_longo_seda_rosa_fabulous_agilita_935_1_e971ed7372fe8dc850aa8b66da9410f1.jpg" alt="Vestido Midi con Botones">
-      <h3>Vestido </h3>
-      <p>$290.00 MXN</p>
-      <div class="controles-cantidad">
-        <button onclick="this.nextElementSibling.stepDown()">-</button>
-        <input type="number" class="cantidad" min="1" value="1">
-        <button onclick="this.previousElementSibling.stepUp()">+</button>
-      </div>
-      <button class="boton-compra" onclick="agregarAlCarrito('Vestido', 290, this)">Agregar al carrito</button>
-    </div>
-    <div class="producto">
-      <img src="https://cdn-0.somosmamas.com.ar/wp-content/uploads/2021/03/shorts-cortos-para-mujer26-768x768.jpg" alt="Shorts de Mezclilla Rasgados">
-      <h3>Shorts de Mezclilla </h3>
-      <p>$300.00 MXN</p>
-      <div class="controles-cantidad">
-        <button onclick="this.nextElementSibling.stepDown()">-</button>
-        <input type="number" class="cantidad" min="1" value="1">
-        <button onclick="this.previousElementSibling.stepUp()">+</button>
-      </div>
-      <button class="boton-compra" onclick="agregarAlCarrito('Shorts de Mezclilla', 300, this)">Agregar al carrito</button>
-    </div>
-
-    <div class="producto">
-      <img src="https://tse1.explicit.bing.net/th/id/OIP.qqb3hQIc-b5n6WGdMWD0IwHaMW?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Blusa de Satén Manga Larga">
-      <h3>Blusa de Satén Manga Larga</h3>
-      <p>$310.00 MXN</p>
-      <div class="controles-cantidad">
-        <button onclick="this.nextElementSibling.stepDown()">-</button>
-        <input type="number" class="cantidad" min="1" value="1">
-        <button onclick="this.previousElementSibling.stepUp()">+</button>
-      </div>
-      <button class="boton-compra" onclick="agregarAlCarrito('Blusa de Satén Manga Larga', 310, this)">Agregar al carrito</button>
-    </div>
-    <div class="producto">
-      <img src="https://tse4.mm.bing.net/th/id/OIP.Kt8FOO3vyunBcMuF18IENAHaKN?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Chamarrón Acolchado Invierno">
-      <h3>Chaleco</h3>
-      <p>$320.00 MXN</p>
-      <div class="controles-cantidad">
-        <button onclick="this.nextElementSibling.stepDown()">-</button>
-        <input type="number" class="cantidad" min="1" value="1">
-        <button onclick="this.previousElementSibling.stepUp()">+</button>
-      </div>
-      <button class="boton-compra" onclick="agregarAlCarrito('Chaleco', 320, this)">Agregar al carrito</button>
-    </div>
-    <div class="producto">
-      <img src="https://ss523.liverpool.com.mx/sm/1092197057.jpg" alt="Pantalón de Vestir Slim Fit">
-      <h3>Pants Mujer</h3>
-      <p>$330.00 MXN</p>
-      <div class="controles-cantidad">
-        <button onclick="this.nextElementSibling.stepDown()">-</button>
-        <input type="number" class="cantidad" min="1" value="1">
-        <button onclick="this.previousElementSibling.stepUp()">+</button>
-      </div>
-      <button class="boton-compra" onclick="agregarAlCarrito('Pants Mujer', 330, this)">Agregar al carrito</button>
-    </div>
-
-    <div class="producto">
-      <img src="https://tse1.mm.bing.net/th/id/OIP.EDHVTirlBmq0NBtLpAFB3QHaHZ?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Body de Malla Transparente">
-      <h3>Falda Mezclilla</h3>
-      <p>$340.00 MXN</p>
-      <div class="controles-cantidad">
-        <button onclick="this.nextElementSibling.stepDown()">-</button>
-        <input type="number" class="cantidad" min="1" value="1">
-        <button onclick="this.previousElementSibling.stepUp()">+</button>
-      </div>
-      <button class="boton-compra" onclick="agregarAlCarrito('Falda Mezclilla', 340, this)">Agregar al carrito</button>
-    </div>
-    
-    <div class="producto">
-      <img src="https://th.bing.com/th/id/OIP.f7QDAIG3rokO20sg6b6HGwHaJ3?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Falda de Cuero Sintético">
-      <h3>Falda Negra</h3>
-      <p>$370.00 MXN</p>
-      <div class="controles-cantidad">
-        <button onclick="this.nextElementSibling.stepDown()">-</button>
-        <input type="number" class="cantidad" min="1" value="1">
-        <button onclick="this.previousElementSibling.stepUp()">+</button>
-      </div>
-      <button class="boton-compra" onclick="agregarAlCarrito('Falda Negra', 370, this)">Agregar al carrito</button>
     </div>
   </div>
 </section>
@@ -393,122 +326,133 @@
   <p>Email: contacto@mibescloset.com</p>
 </section>
 
-<!-- Carrito de compras flotante -->
+<!-- Carrito de compras -->
 <div id="carrito">
-  <h3>Carrito de Compras <span id="contador-carrito">(0)</span></h3>
-  <div id="items-carrito"></div>
-  <p id="total-carrito">Total: $0.00 MXN</p>
+  <h3>Carrito <span id="contador-carrito">0</span></h3>
+  <div id="items-carrito">
+    <p class="carrito-vacio">El carrito está vacío</p>
+  </div>
+  <div id="total-carrito">Total: $0.00 MXN</div>
   <button id="realizar-compra" onclick="realizarCompra()">Realizar Compra</button>
 </div>
 
 <a href="#inicio" class="boton-volver">Volver al Inicio</a>
 
 <script>
+  // Array para almacenar los productos del carrito
   let carrito = [];
   
-  // Cargar carrito desde localStorage si existe
-  if(localStorage.getItem('carrito')) {
-    carrito = JSON.parse(localStorage.getItem('carrito'));
-    actualizarCarrito();
-  }
-  
+  // Función para agregar productos al carrito
   function agregarAlCarrito(nombre, precio, boton) {
-    const cantidadInput = boton.previousElementSibling.querySelector('input');
+    // Obtener la cantidad del producto
+    const cantidadInput = boton.parentElement.querySelector('.cantidad-producto');
     const cantidad = parseInt(cantidadInput.value);
     
-    // Buscar si el producto ya está en el carrito
+    // Verificar si el producto ya está en el carrito
     const productoExistente = carrito.find(item => item.nombre === nombre);
     
-    if(productoExistente) {
+    if (productoExistente) {
       // Si ya existe, aumentar la cantidad
       productoExistente.cantidad += cantidad;
     } else {
       // Si no existe, agregarlo al carrito
-      const producto = {
+      carrito.push({
         nombre: nombre,
         precio: precio,
         cantidad: cantidad
-      };
-      carrito.push(producto);
+      });
     }
     
-    // Guardar en localStorage
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-    
+    // Actualizar el carrito en la interfaz
     actualizarCarrito();
     
     // Mostrar notificación
     alert(Se agregaron ${cantidad} ${nombre} al carrito);
     
-    // Resetear cantidad a 1
+    // Resetear la cantidad a 1
     cantidadInput.value = 1;
   }
   
+  // Función para actualizar la visualización del carrito
   function actualizarCarrito() {
     const itemsCarrito = document.getElementById('items-carrito');
     const totalCarrito = document.getElementById('total-carrito');
     const contadorCarrito = document.getElementById('contador-carrito');
     
+    // Limpiar el carrito
     itemsCarrito.innerHTML = '';
-    let total = 0;
-    let totalItems = 0;
     
-    carrito.forEach((item, index) => {
-      const subtotal = item.precio * item.cantidad;
+    // Calcular total y cantidad de items
+    let total = 0;
+    let cantidadTotal = 0;
+    
+    // Si el carrito está vacío
+    if (carrito.length === 0) {
+      itemsCarrito.innerHTML = '<p class="carrito-vacio">El carrito está vacío</p>';
+      totalCarrito.textContent = 'Total: $0.00 MXN';
+      contadorCarrito.textContent = '0';
+      return;
+    }
+    
+    // Recorrer los productos del carrito
+    carrito.forEach((producto, index) => {
+      const subtotal = producto.precio * producto.cantidad;
       total += subtotal;
-      totalItems += item.cantidad;
+      cantidadTotal += producto.cantidad;
       
+      // Crear elemento para el producto en el carrito
       const itemElement = document.createElement('div');
       itemElement.className = 'item-carrito';
       itemElement.innerHTML = `
-        <div>
-          <p>${item.nombre}</p>
-          <small>${item.cantidad} x $${item.precio.toFixed(2)} = $${subtotal.toFixed(2)}</small>
+        <div class="item-info">
+          <span class="nombre">${producto.nombre}</span>
+          <span class="precio">$${producto.precio.toFixed(2)}</span>
+          <span class="cantidad">${producto.cantidad} unidades</span>
         </div>
         <button class="boton-eliminar" onclick="eliminarDelCarrito(${index})">X</button>
       `;
+      
       itemsCarrito.appendChild(itemElement);
     });
     
+    // Actualizar total y contador
     totalCarrito.textContent = Total: $${total.toFixed(2)} MXN;
-    contadorCarrito.textContent = (${totalItems});
-    
-    // Mostrar u ocultar carrito según si tiene items
-    if(carrito.length > 0) {
-      document.getElementById('carrito').style.display = 'block';
-    } else {
-      document.getElementById('carrito').style.display = 'none';
-    }
+    contadorCarrito.textContent = cantidadTotal;
   }
   
+  // Función para eliminar un producto del carrito
   function eliminarDelCarrito(index) {
     carrito.splice(index, 1);
-    localStorage.setItem('carrito', JSON.stringify(carrito));
     actualizarCarrito();
   }
   
+  // Función para realizar la compra
   function realizarCompra() {
     if (carrito.length === 0) {
       alert('El carrito está vacío');
       return;
     }
     
-    // Aquí podrías conectar con un sistema de pago real
-    const total = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
-    const resumen = carrito.map(item => 
-      ${item.cantidad} x ${item.nombre} - $${item.precio.toFixed(2)} c/u
-    ).join('\n');
+    // Crear resumen de la compra
+    let resumen = 'Resumen de tu compra:\n\n';
+    let total = 0;
     
-    alert(Compra realizada con éxito!\n\n${resumen}\n\nTotal: $${total.toFixed(2)} MXN\n\nGracias por tu compra.);
+    carrito.forEach(producto => {
+      const subtotal = producto.precio * producto.cantidad;
+      total += subtotal;
+      resumen += ${producto.cantidad} x ${producto.nombre} - $${producto.precio.toFixed(2)} = $${subtotal.toFixed(2)}\n;
+    });
     
-    // Vaciar carrito
-    carrito = [];
-    localStorage.removeItem('carrito');
-    actualizarCarrito();
+    resumen += \nTotal: $${total.toFixed(2)} MXN;
+    
+    // Mostrar confirmación
+    if (confirm(${resumen}\n\n¿Deseas confirmar la compra?)) {
+      alert('¡Compra realizada con éxito! Gracias por tu compra.');
+      // Vaciar el carrito
+      carrito = [];
+      actualizarCarrito();
+    }
   }
-  
-  // Inicializar carrito
-  actualizarCarrito();
 </script>
 
 </body>
