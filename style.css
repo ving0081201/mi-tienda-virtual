@@ -1,92 +1,103 @@
-/* Estilo general */
+/* Fuente moderna */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #fefefe;
+  font-family: 'Quicksand', sans-serif;
+  background: #fafafa;
   color: #333;
 }
 
-/* Encabezado */
+/* Encabezado elegante */
 h1 {
   text-align: center;
-  background: linear-gradient(90deg, #8e44ad, #3498db);
+  background: linear-gradient(90deg, #ff6f61, #ff9a8b);
   color: white;
-  padding: 30px 0;
+  padding: 40px 20px;
   margin: 0;
-  font-size: 2.5rem;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  font-size: 2.8rem;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  border-bottom: 5px solid #fce4ec;
 }
 
-/* Contenedor de productos */
+/* Contenedor flexible */
 .productos-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 40px 20px;
   gap: 25px;
+  padding: 50px 20px;
 }
 
-/* Tarjeta de producto */
+/* Tarjetas de producto con efecto hover */
 .producto {
-  background-color: white;
-  border-radius: 12px;
-  width: 280px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #fff;
+  border-radius: 16px;
   overflow: hidden;
+  width: 280px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease-in-out;
+  border: 1px solid #ffe0e0;
 }
 
 .producto:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
 }
 
+/* Imagen del producto */
 .producto img {
   width: 100%;
   height: 320px;
   object-fit: cover;
+  border-bottom: 2px solid #ff9a8b;
 }
 
+/* Título del producto */
 .producto h3 {
   font-size: 1.2rem;
+  color: #2d3436;
   margin: 15px 0 5px;
-  color: #2c3e50;
 }
 
+/* Precio */
 .producto p {
+  color: #d63031;
   font-weight: bold;
   font-size: 1.1rem;
-  color: #27ae60;
   margin-bottom: 15px;
 }
 
-/* Botón volver */
+/* Botón de volver */
 .boton-volver {
-  display: inline-block;
-  margin: 40px auto;
+  display: block;
+  width: fit-content;
+  margin: 40px auto 60px;
   padding: 14px 30px;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 600;
   color: white;
-  background: linear-gradient(90deg, #e74c3c, #c0392b);
+  background: linear-gradient(90deg, #ff6f61, #e84393);
   text-decoration: none;
   border-radius: 30px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  transition: background 0.3s ease;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+  transition: all 0.3s ease-in-out;
 }
 
 .boton-volver:hover {
-  background: linear-gradient(90deg, #c0392b, #e74c3c);
+  background: linear-gradient(90deg, #e84393, #ff6f61);
+  transform: scale(1.05);
 }
 
-/* Responsive */
+/* Responsivo */
 @media (max-width: 768px) {
   .producto {
     width: 90%;
   }
 
   h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 }
