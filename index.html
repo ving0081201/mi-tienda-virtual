@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mi Clóset Virtual Mibes</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tu Clóset Virtual</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
 <header>
-  <h1>Mi Clóset Virtual Mibes</h1>
+  <h1>Tu Clóset Virtual</h1>
 </header>
 
 <nav>
@@ -22,12 +22,11 @@
 </nav>
 
 <section id="inicio">
-  <h2>Bienvenido a Mi Clóset Virtual Mibes</h2>
+  <h2>Bienvenido a Tu Clóset Virtual</h2>
   <p>Explora tu estilo con las prendas más exclusivas para cada ocasión.</p>
 </section>
 
 <section id="productos">
-  <h2>Catálogo de Ropa</h2>
   <div class="productos-container">
 
     <!-- Producto 1 -->
@@ -141,17 +140,12 @@
   function agregarAlCarrito(nombre, precio, boton) {
     const cantidadInput = boton.parentElement.querySelector('.cantidad-producto');
     const cantidad = parseInt(cantidadInput.value);
-
     const productoExistente = carrito.find(item => item.nombre === nombre);
 
     if (productoExistente) {
       productoExistente.cantidad += cantidad;
     } else {
-      carrito.push({
-        nombre: nombre,
-        precio: precio,
-        cantidad: cantidad
-      });
+      carrito.push({ nombre, precio, cantidad });
     }
 
     actualizarCarrito();
@@ -165,7 +159,6 @@
     const contadorCarrito = document.getElementById('contador-carrito');
 
     itemsCarrito.innerHTML = '';
-
     let total = 0;
     let cantidadTotal = 0;
 
@@ -191,7 +184,6 @@
         </div>
         <button class="boton-eliminar" onclick="eliminarDelCarrito(${index})">X</button>
       `;
-
       itemsCarrito.appendChild(itemElement);
     });
 
