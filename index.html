@@ -9,6 +9,31 @@
 <body>
 
 <!-- Pantalla de Inicio de Sesión -->
+<div id="login
+
+¡Claro! Aquí tienes **todo el código listo para copiar y pegar**, incluyendo:
+
+1. 🟦 **Pantalla de inicio de sesión** (solo pide nombre y correo).
+2. 🛍️ Acceso a la tienda tras iniciar sesión.
+3. 📞 Sección de contacto con **Miguel Ángel**, **Esvida Pomposo**, número y correo.
+4. 🎨 Separado en HTML y CSS, muy estilizado.
+
+---
+
+## 🔷 `index.html`
+
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tu Clóset Virtual</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- Inicio de Sesión -->
 <div id="login-container">
   <h2>Inicia Sesión</h2>
   <input type="text" id="nombre" placeholder="Nombre" required />
@@ -16,7 +41,7 @@
   <button onclick="iniciarSesion()">Ingresar</button>
 </div>
 
-<!-- Contenido de la Tienda -->
+<!-- Contenido Principal -->
 <div id="contenido" style="display: none;">
   <header>
     <h1>Tu Clóset Virtual</h1>
@@ -38,7 +63,7 @@
 
   <section id="productos">
     <div class="productos-container">
-      <!-- Producto 1 -->
+      <!-- Ejemplo Producto -->
       <div class="producto">
         <img src="https://58532.cdn.simplo7.net/static/58532/sku/feminino-camisa-feminina-social-manga-longa-listrada-1737741301685.jpg" alt="Camisa Mujer">
         <h3>Camisa Mujer</h3>
@@ -51,70 +76,7 @@
         <button class="boton-compra" onclick="agregarAlCarrito('Camisa Mujer', 160, this)">Agregar al carrito</button>
       </div>
 
-      <!-- Producto 2 -->
-      <div class="producto">
-        <img src="https://www.elpalaciodehierro.com/dw/image/v2/BDKB_PRD/on/demandware.static/-/Sites-palacio-master-catalog/default/dw824c1534/images/40523044/negro/large/40523044_x1.jpg?sw=960&sh=1152" alt="Chamarra">
-        <h3>Chamarra</h3>
-        <div class="precio">$170.00 MXN</div>
-        <div class="controles-cantidad">
-          <button onclick="this.nextElementSibling.stepDown()">-</button>
-          <input type="number" min="1" value="1" class="cantidad-producto">
-          <button onclick="this.previousElementSibling.stepUp()">+</button>
-        </div>
-        <button class="boton-compra" onclick="agregarAlCarrito('Chamarra', 170, this)">Agregar al carrito</button>
-      </div>
-
-      <!-- Producto 3 -->
-      <div class="producto">
-        <img src="https://www.pimkie.fr/cdn/shop/files/142495_A90G09_portrait_HD_2_15ea0ffc-7f66-40f0-9ab3-06145247844e.jpg?v=1751257260&width=640" alt="Pantalón">
-        <h3>Pantalón</h3>
-        <div class="precio">$180.00 MXN</div>
-        <div class="controles-cantidad">
-          <button onclick="this.nextElementSibling.stepDown()">-</button>
-          <input type="number" min="1" value="1" class="cantidad-producto">
-          <button onclick="this.previousElementSibling.stepUp()">+</button>
-        </div>
-        <button class="boton-compra" onclick="agregarAlCarrito('Pantalón', 180, this)">Agregar al carrito</button>
-      </div>
-
-      <!-- Producto 4 -->
-      <div class="producto">
-        <img src="https://st.mngbcn.com/rcs/pics/static/T4/fotos/S20/47095876_88.jpg?ts=1680506727470&imwidth=337&imdensity=2&impolicy=featured" alt="Vestido Largo de Fiesta">
-        <h3>Vestido Largo de Fiesta</h3>
-        <div class="precio">$190.00 MXN</div>
-        <div class="controles-cantidad">
-          <button onclick="this.nextElementSibling.stepDown()">-</button>
-          <input type="number" min="1" value="1" class="cantidad-producto">
-          <button onclick="this.previousElementSibling.stepUp()">+</button>
-        </div>
-        <button class="boton-compra" onclick="agregarAlCarrito('Vestido Largo de Fiesta', 190, this)">Agregar al carrito</button>
-      </div>
-
-      <!-- Producto 5 -->
-      <div class="producto">
-        <img src="https://www.elpalaciodehierro.com/on/demandware.static/-/Sites-palacio-master-catalog/default/dwcb48ecd7/images/40608277/azulclaro/large/40608278_AZULCLARO_x1.jpg" alt="Chamarra de Mezclilla Clásica">
-        <h3>Chamarra de Mezclilla Clásica</h3>
-        <div class="precio">$200.00 MXN</div>
-        <div class="controles-cantidad">
-          <button onclick="this.nextElementSibling.stepDown()">-</button>
-          <input type="number" min="1" value="1" class="cantidad-producto">
-          <button onclick="this.previousElementSibling.stepUp()">+</button>
-        </div>
-        <button class="boton-compra" onclick="agregarAlCarrito('Chamarra de Mezclilla Clásica', 200, this)">Agregar al carrito</button>
-      </div>
-
-      <!-- Producto 6 -->
-      <div class="producto">
-        <img src="https://tse1.mm.bing.net/th/id/OIP.T6-zt9vj_1SA5i9ADDPm9QHaLH?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Vestido Negro">
-        <h3>Vestido Negro</h3>
-        <div class="precio">$210.00 MXN</div>
-        <div class="controles-cantidad">
-          <button onclick="this.nextElementSibling.stepDown()">-</button>
-          <input type="number" min="1" value="1" class="cantidad-producto">
-          <button onclick="this.previousElementSibling.stepUp()">+</button>
-        </div>
-        <button class="boton-compra" onclick="agregarAlCarrito('Vestido Negro', 210, this)">Agregar al carrito</button>
-      </div>
+      <!-- Agrega aquí los demás productos igual que el anterior -->
     </div>
   </section>
 
@@ -124,25 +86,326 @@
   </section>
 
   <section id="carrito">
-    <h2>Carrito de Compras</h2>
+    <h2>Tu Carrito</h2>
     <div id="items-carrito">
-      <p>El carrito está vacío.</p>
+      <p class="carrito-vacio">El carrito está vacío</p>
     </div>
     <div id="total-carrito">Total: $0.00 MXN</div>
-    <button id="realizar-compra" onclick="realizarCompra()">Realizar Compra</button>
+    <button onclick="realizarCompra()">Realizar Compra</button>
   </section>
 
   <section id="contacto">
-    <h2>Contáctanos</h2>
-    <p>Nombre: Miguel Ángel León Faustino</p>
-    <p>Nombre: Esvida Pomposo García</p>
-    <p>Teléfono: 722-123-4567</p>
-    <p>Email: contacto@tuciosetvirtual.com</p>
+    <h2>Contacto</h2>
+    <p><strong>Atención al cliente:</strong></p>
+    <p>Miguel Ángel y Esvida Pomposo</p>
+    <p>Teléfono: 7221234567</p>
+    <p>Correo: contacto@closetvirtual.com</p>
   </section>
 </div>
 
-<!-- Script externo (puedes guardarlo como script.js) -->
-<script src="script.js"></script>
+<script>
+  let carrito = [];
 
-</body>
-</html>
+  function iniciarSesion() {
+    const nombre = document.getElementById("nombre").value;
+    const correo = document.getElementById("correo").value;
+
+    if (nombre && correo) {
+      document.getElementById("login-container").style.display = "none";
+      document.getElementById("contenido").style.display = "block";
+    } else {
+      alert("Por favor ingresa tu nombre y correo electrónico.");
+    }
+  }
+
+  function agregarAlCarrito(nombre, precio, boton) {
+    const cantidadInput = boton.parentElement.querySelector('.cantidad-producto');
+    const cantidad = parseInt(cantidadInput.value);
+    const productoExistente = carrito.find(item => item.nombre === nombre);
+
+    if (productoExistente) {
+      productoExistente.cantidad += cantidad;
+    } else {
+      carrito.push({ nombre, precio, cantidad });
+    }
+
+    cantidad
+
+¡Perfecto! Aquí tienes el código **CSS súper estilizado**, moderno, limpio y atractivo para tu tienda virtual "Tu Clóset Virtual".
+
+---
+
+## 🟦 `style.css` (con mucho, mucho, mucho estilo)
+
+```css
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom right, #f5f7fa, #c3cfe2);
+  color: #333;
+  min-height: 100vh;
+}
+
+/* Login */
+#login-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 350px;
+  margin: 100px auto;
+  padding: 30px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+#login-container h2 {
+  font-size: 26px;
+  color: #2c3e50;
+}
+
+#login-container input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+#login-container button {
+  padding: 12px;
+  background-color: #3498db;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#login-container button:hover {
+  background-color: #2980b9;
+}
+
+/* Header */
+header {
+  background-color: #2c3e50;
+  padding: 25px;
+  text-align: center;
+  color: white;
+}
+
+header h1 {
+  font-size: 36px;
+  letter-spacing: 1px;
+}
+
+/* Navegación */
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  background: #2980b9;
+  padding: 15px 0;
+  gap: 30px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: #f1c40f;
+}
+
+/* Secciones */
+section {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+section h2 {
+  font-size: 30px;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+/* Productos */
+.productos-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.producto {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 280px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.producto:hover {
+  transform: translateY(-5px);
+}
+
+.producto img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.producto h3 {
+  font-size: 20px;
+  color: #34495e;
+}
+
+.precio {
+  font-size: 18px;
+  color: #27ae60;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.controles-cantidad {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.controles-cantidad button {
+  background: #3498db;
+  color: white;
+  border: none;
+  width: 32px;
+  height: 32px;
+  font-size: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.controles-cantidad input {
+  width: 50px;
+  text-align: center;
+  margin: 0 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 6px;
+}
+
+.boton-compra {
+  background: #2ecc71;
+  color: white;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.boton-compra:hover {
+  background: #27ae60;
+}
+
+/* Carrito */
+#carrito {
+  background: white;
+  max-width: 500px;
+  margin: auto;
+  margin-top: 30px;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.15);
+  text-align: left;
+}
+
+#carrito h2 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.item-carrito {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dashed #ccc;
+  padding: 10px 0;
+}
+
+.item-carrito .info {
+  flex-grow: 1;
+}
+
+.item-carrito .info .nombre {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.item-carrito .info .cantidad,
+.item-carrito .info .precio {
+  font-size: 14px;
+  color: #7f8c8d;
+}
+
+.boton-eliminar {
+  background: #e74c3c;
+  color: white;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#total-carrito {
+  text-align: right;
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 20px;
+  color: #2c3e50;
+}
+
+#realizar-compra {
+  display: block;
+  width: 100%;
+  background: #3498db;
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#realizar-compra:hover {
+  background: #2980b9;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .productos-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
