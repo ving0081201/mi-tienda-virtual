@@ -18,6 +18,7 @@
     <li><a href="#productos">Productos</a></li>
     <li><a href="#ofertas">Ofertas</a></li>
     <li><a href="#contacto">Contacto</a></li>
+    <li><a href="#carrito">Carrito (<span id="contador-carrito">0</span>)</a></li>
   </ul>
 </nav>
 
@@ -29,7 +30,7 @@
 <section id="productos">
   <div class="productos-container">
 
-    <!-- Producto 1 -->
+    <!-- PRODUCTOS -->
     <div class="producto">
       <img src="https://58532.cdn.simplo7.net/static/58532/sku/feminino-camisa-feminina-social-manga-longa-listrada-1737741301685.jpg" alt="Camisa Mujer">
       <h3>Camisa Mujer</h3>
@@ -42,7 +43,6 @@
       <button class="boton-compra" onclick="agregarAlCarrito('Camisa Mujer', 160, this)">Agregar al carrito</button>
     </div>
 
-    <!-- Producto 2 -->
     <div class="producto">
       <img src="https://www.elpalaciodehierro.com/dw/image/v2/BDKB_PRD/on/demandware.static/-/Sites-palacio-master-catalog/default/dw824c1534/images/40523044/negro/large/40523044_x1.jpg?sw=960&sh=1152" alt="Chamarra">
       <h3>Chamarra</h3>
@@ -55,7 +55,6 @@
       <button class="boton-compra" onclick="agregarAlCarrito('Chamarra', 170, this)">Agregar al carrito</button>
     </div>
 
-    <!-- Producto 3 -->
     <div class="producto">
       <img src="https://www.pimkie.fr/cdn/shop/files/142495_A90G09_portrait_HD_2_15ea0ffc-7f66-40f0-9ab3-06145247844e.jpg?v=1751257260&width=640" alt="Pantalón">
       <h3>Pantalón</h3>
@@ -68,7 +67,6 @@
       <button class="boton-compra" onclick="agregarAlCarrito('Pantalón', 180, this)">Agregar al carrito</button>
     </div>
 
-    <!-- Producto 4 -->
     <div class="producto">
       <img src="https://st.mngbcn.com/rcs/pics/static/T4/fotos/S20/47095876_88.jpg?ts=1680506727470&imwidth=337&imdensity=2&impolicy=featured" alt="Vestido Largo de Fiesta">
       <h3>Vestido Largo de Fiesta</h3>
@@ -81,7 +79,6 @@
       <button class="boton-compra" onclick="agregarAlCarrito('Vestido Largo de Fiesta', 190, this)">Agregar al carrito</button>
     </div>
 
-    <!-- Producto 5 -->
     <div class="producto">
       <img src="https://www.elpalaciodehierro.com/on/demandware.static/-/Sites-palacio-master-catalog/default/dwcb48ecd7/images/40608277/azulclaro/large/40608278_AZULCLARO_x1.jpg" alt="Chamarra de Mezclilla Clásica">
       <h3>Chamarra de Mezclilla Clásica</h3>
@@ -94,7 +91,6 @@
       <button class="boton-compra" onclick="agregarAlCarrito('Chamarra de Mezclilla Clásica', 200, this)">Agregar al carrito</button>
     </div>
 
-    <!-- Producto 6 -->
     <div class="producto">
       <img src="https://tse1.mm.bing.net/th/id/OIP.T6-zt9vj_1SA5i9ADDPm9QHaLH?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Vestido Negro">
       <h3>Vestido Negro</h3>
@@ -122,9 +118,9 @@
   <p>Email: contacto@mibescloset.com</p>
 </section>
 
-<!-- Carrito al final -->
+<!-- SECCIÓN DEL CARRITO ABAJO -->
 <section id="carrito">
-  <h3>Carrito <span id="contador-carrito">0</span></h3>
+  <h2>Tu Carrito de Compras</h2>
   <div id="items-carrito">
     <p class="carrito-vacio">El carrito está vacío</p>
   </div>
@@ -178,9 +174,9 @@
       itemElement.className = 'item-carrito';
       itemElement.innerHTML = `
         <div class="item-info">
-          <span class="nombre">${producto.nombre}</span><br>
-          <span class="precio">$${producto.precio.toFixed(2)}</span><br>
-          <span class="cantidad">${producto.cantidad} unidades</span>
+          <strong>${producto.nombre}</strong><br>
+          ${producto.cantidad} unidades<br>
+          $${producto.precio.toFixed(2)} c/u
         </div>
         <button class="boton-eliminar" onclick="eliminarDelCarrito(${index})">X</button>
       `;
@@ -208,13 +204,13 @@
     carrito.forEach(producto => {
       const subtotal = producto.precio * producto.cantidad;
       total += subtotal;
-      resumen += `${producto.cantidad} x ${producto.nombre} - $${producto.precio.toFixed(2)} = $${subtotal.toFixed(2)}\n`;
+      resumen += `${producto.cantidad} x ${producto.nombre} = $${subtotal.toFixed(2)}\n`;
     });
 
     resumen += `\nTotal: $${total.toFixed(2)} MXN`;
 
     if (confirm(`${resumen}\n\n¿Deseas confirmar la compra?`)) {
-      alert('¡Compra realizada con éxito! Gracias por tu compra.');
+      alert('¡Compra realizada con éxito!');
       carrito = [];
       actualizarCarrito();
     }
