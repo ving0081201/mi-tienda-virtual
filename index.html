@@ -5,6 +5,72 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Tu Clóset Virtual</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header, nav, section, footer {
+      padding: 20px;
+    }
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+      padding: 0;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+    }
+    .productos-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .producto {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 10px;
+      width: calc(33.33% - 20px);
+      box-sizing: border-box;
+      text-align: center;
+    }
+    .producto img {
+      width: 100%;
+      height: auto;
+    }
+    .controles-cantidad {
+      margin: 10px 0;
+    }
+    .controles-cantidad button {
+      width: 30px;
+    }
+    .boton-compra {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    #login-container {
+      max-width: 400px;
+      margin: 50px auto;
+      text-align: center;
+    }
+    #login-container input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+    }
+    #login-container button {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  </style>
 </head>
 <body>
 
@@ -20,6 +86,7 @@
 <div id="contenido" style="display: none;">
   <header>
     <h1>Tu Clóset Virtual</h1>
+    <p id="saludo-usuario"></p>
   </header>
 
   <nav>
@@ -53,7 +120,7 @@
 
       <!-- Producto 2 -->
       <div class="producto">
-        <img src="https://www.elpalaciodehierro.com/dw/image/v2/BDKB_PRD/on/demandware.static/-/Sites-palacio-master-catalog/default/dw824c1534/images/40523044/negro/large/40523044_x1.jpg?sw=960&sh=1152" alt="Chamarra">
+        <img src="https://www.elpalaciodehierro.com/dw/image/v2/BDKB_PRD/on/demandware.static/-/Sites-palacio-master-catalog/default/dw824c1534/images/40523044/negro/large/40523044_x1.jpg" alt="Chamarra">
         <h3>Chamarra</h3>
         <div class="precio">$170.00 MXN</div>
         <div class="controles-cantidad">
@@ -76,45 +143,6 @@
         </div>
         <button class="boton-compra" onclick="agregarAlCarrito('Pantalón', 180, this)">Agregar al carrito</button>
       </div>
-
-      <!-- Producto 4 -->
-      <div class="producto">
-        <img src="https://st.mngbcn.com/rcs/pics/static/T4/fotos/S20/47095876_88.jpg?ts=1680506727470&imwidth=337&imdensity=2&impolicy=featured" alt="Vestido Largo de Fiesta">
-        <h3>Vestido Largo de Fiesta</h3>
-        <div class="precio">$190.00 MXN</div>
-        <div class="controles-cantidad">
-          <button onclick="this.nextElementSibling.stepDown()">-</button>
-          <input type="number" min="1" value="1" class="cantidad-producto">
-          <button onclick="this.previousElementSibling.stepUp()">+</button>
-        </div>
-        <button class="boton-compra" onclick="agregarAlCarrito('Vestido Largo de Fiesta', 190, this)">Agregar al carrito</button>
-      </div>
-
-      <!-- Producto 5 -->
-      <div class="producto">
-        <img src="https://www.elpalaciodehierro.com/on/demandware.static/-/Sites-palacio-master-catalog/default/dwcb48ecd7/images/40608277/azulclaro/large/40608278_AZULCLARO_x1.jpg" alt="Chamarra de Mezclilla Clásica">
-        <h3>Chamarra de Mezclilla Clásica</h3>
-        <div class="precio">$200.00 MXN</div>
-        <div class="controles-cantidad">
-          <button onclick="this.nextElementSibling.stepDown()">-</button>
-          <input type="number" min="1" value="1" class="cantidad-producto">
-          <button onclick="this.previousElementSibling.stepUp()">+</button>
-        </div>
-        <button class="boton-compra" onclick="agregarAlCarrito('Chamarra de Mezclilla Clásica', 200, this)">Agregar al carrito</button>
-      </div>
-
-      <!-- Producto 6 -->
-      <div class="producto">
-        <img src="https://tse1.mm.bing.net/th/id/OIP.T6-zt9vj_1SA5i9ADDPm9QHaLH?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Vestido Negro">
-        <h3>Vestido Negro</h3>
-        <div class="precio">$210.00 MXN</div>
-        <div class="controles-cantidad">
-          <button onclick="this.nextElementSibling.stepDown()">-</button>
-          <input type="number" min="1" value="1" class="cantidad-producto">
-          <button onclick="this.previousElementSibling.stepUp()">+</button>
-        </div>
-        <button class="boton-compra" onclick="agregarAlCarrito('Vestido Negro', 210, this)">Agregar al carrito</button>
-      </div>
     </div>
   </section>
 
@@ -129,7 +157,7 @@
       <p>El carrito está vacío.</p>
     </div>
     <div id="total-carrito">Total: $0.00 MXN</div>
-    <button id="realizar-compra" onclick="realizarCompra()">Realizar Compra</button>
+    <button onclick="realizarCompra()">Realizar Compra</button>
   </section>
 
   <section id="contacto">
@@ -141,8 +169,68 @@
   </section>
 </div>
 
-<!-- Script externo (puedes guardarlo como script.js) -->
-<script src="script.js"></script>
+<script>
+  function iniciarSesion() {
+    const nombre = document.getElementById('nombre').value.trim();
+    const correo = document.getElementById('correo').value.trim();
+
+    if (nombre !== "" && correo !== "") {
+      document.getElementById('login-container').style.display = "none";
+      document.getElementById('contenido').style.display = "block";
+      document.getElementById('saludo-usuario').textContent = "Hola, " + nombre + " 👋";
+    } else {
+      alert("Por favor, ingresa tu nombre y correo electrónico.");
+    }
+  }
+
+  let carrito = [];
+
+  function agregarAlCarrito(nombreProducto, precio, boton) {
+    const cantidadInput = boton.parentElement.querySelector('.cantidad-producto');
+    const cantidad = parseInt(cantidadInput.value);
+
+    const productoExistente = carrito.find(item => item.nombre === nombreProducto);
+    if (productoExistente) {
+      productoExistente.cantidad += cantidad;
+    } else {
+      carrito.push({ nombre: nombreProducto, precio, cantidad });
+    }
+
+    actualizarCarrito();
+  }
+
+  function actualizarCarrito() {
+    const contenedor = document.getElementById("items-carrito");
+    contenedor.innerHTML = "";
+
+    let total = 0;
+    carrito.forEach(item => {
+      const subtotal = item.precio * item.cantidad;
+      total += subtotal;
+
+      const itemHTML = document.createElement("p");
+      itemHTML.textContent = `${item.nombre} x ${item.cantidad} = $${subtotal.toFixed(2)} MXN`;
+      contenedor.appendChild(itemHTML);
+    });
+
+    if (carrito.length === 0) {
+      contenedor.innerHTML = "<p>El carrito está vacío.</p>";
+    }
+
+    document.getElementById("total-carrito").textContent = `Total: $${total.toFixed(2)} MXN`;
+    document.getElementById("contador-carrito").textContent = carrito.reduce((sum, item) => sum + item.cantidad, 0);
+  }
+
+  function realizarCompra() {
+    if (carrito.length === 0) {
+      alert("Tu carrito está vacío.");
+    } else {
+      alert("¡Gracias por tu compra!");
+      carrito = [];
+      actualizarCarrito();
+    }
+  }
+</script>
 
 </body>
 </html>
