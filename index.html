@@ -4,220 +4,204 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Tu Clóset Virtual</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
+  <header>
+    <h1>Tu Clóset Virtual</h1>
+  </header>
 
-<header>
-  <h1>Tu Clóset Virtual</h1>
-</header>
+  <nav>
+    <ul>
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#productos">Productos</a></li>
+      <li><a href="#ofertas">Ofertas</a></li>
+      <li><a href="#carrito">Ver Carrito (<span id="contador-carrito">0</span>)</a></li>
+    </ul>
+  </nav>
 
-<nav>
-  <ul>
-    <li><a href="#inicio">Inicio</a></li>
-    <li><a href="#productos">Productos</a></li>
-    <li><a href="#ofertas">Ofertas</a></li>
-    <li><a href="#contacto">Contacto</a></li>
-    <li><a href="#carrito">Ver Carrito (<span id="contador-carrito">0</span>)</a></li>
-  </ul>
-</nav>
+  <section id="inicio">
+    <h2>Bienvenido</h2>
+    <p>Explora tu estilo con las prendas más exclusivas para cada ocasión.</p>
+  </section>
 
-<section id="inicio">
-  <h2>Bienvenido a Tu Clóset Virtual</h2>
-  <p>Explora tu estilo con las prendas más exclusivas para cada ocasión.</p>
-</section>
-
-<section id="productos">
-  <div class="productos-container">
-    <!-- Aquí van todos los productos, incluyendo los 6 originales -->
-    <!-- Producto 1 -->
-    <div class="producto">
-      <img src="https://58532.cdn.simplo7.net/static/58532/sku/feminino-camisa-feminina-social-manga-longa-listrada-1737741301685.jpg" alt="Camisa Mujer">
-      <h3>Camisa Mujer</h3>
-      <div class="precio">$160.00 MXN</div>
-      <div class="controles-cantidad">
-        <button onclick="this.nextElementSibling.stepDown()">-</button>
-        <input type="number" min="1" value="1" class="cantidad-producto">
-        <button onclick="this.previousElementSibling.stepUp()">+</button>
-      </div>
-      <button class="boton-compra" onclick="agregarAlCarrito('Camisa Mujer', 160, this)">Agregar al carrito</button>
-    </div>
-
-    <!-- Producto 2 -->
-    <div class="producto">
-      <img src="https://www.elpalaciodehierro.com/dw/image/v2/BDKB_PRD/on/demandware.static/-/Sites-palacio-master-catalog/default/dw824c1534/images/40523044/negro/large/40523044_x1.jpg?sw=960&sh=1152" alt="Chamarra">
-      <h3>Chamarra</h3>
-      <div class="precio">$170.00 MXN</div>
-      <div class="controles-cantidad">
-        <button onclick="this.nextElementSibling.stepDown()">-</button>
-        <input type="number" min="1" value="1" class="cantidad-producto">
-        <button onclick="this.previousElementSibling.stepUp()">+</button>
-      </div>
-      <button class="boton-compra" onclick="agregarAlCarrito('Chamarra', 170, this)">Agregar al carrito</button>
-    </div>
-
-    <!-- Producto 3 -->
-    <div class="producto">
-      <img src="https://www.pimkie.fr/cdn/shop/files/142495_A90G09_portrait_HD_2_15ea0ffc-7f66-40f0-9ab3-06145247844e.jpg?v=1751257260&width=640" alt="Pantalón">
-      <h3>Pantalón</h3>
-      <div class="precio">$180.00 MXN</div>
-      <div class="controles-cantidad">
-        <button onclick="this.nextElementSibling.stepDown()">-</button>
-        <input type="number" min="1" value="1" class="cantidad-producto">
-        <button onclick="this.previousElementSibling.stepUp()">+</button>
-      </div>
-      <button class="boton-compra" onclick="agregarAlCarrito('Pantalón', 180, this)">Agregar al carrito</button>
-    </div>
-
-    <!-- Producto 4 -->
-    <div class="producto">
-      <img src="https://st.mngbcn.com/rcs/pics/static/T4/fotos/S20/47095876_88.jpg?ts=1680506727470&imwidth=337&imdensity=2&impolicy=featured" alt="Vestido Largo de Fiesta">
-      <h3>Vestido Largo de Fiesta</h3>
-      <div class="precio">$190.00 MXN</div>
-      <div class="controles-cantidad">
-        <button onclick="this.nextElementSibling.stepDown()">-</button>
-        <input type="number" min="1" value="1" class="cantidad-producto">
-        <button onclick="this.previousElementSibling.stepUp()">+</button>
-      </div>
-      <button class="boton-compra" onclick="agregarAlCarrito('Vestido Largo de Fiesta', 190, this)">Agregar al carrito</button>
-    </div>
-
-    <!-- Producto 5 -->
-    <div class="producto">
-      <img src="https://www.elpalaciodehierro.com/on/demandware.static/-/Sites-palacio-master-catalog/default/dwcb48ecd7/images/40608277/azulclaro/large/40608278_AZULCLARO_x1.jpg" alt="Chamarra de Mezclilla Clásica">
-      <h3>Chamarra de Mezclilla Clásica</h3>
-      <div class="precio">$200.00 MXN</div>
-      <div class="controles-cantidad">
-        <button onclick="this.nextElementSibling.stepDown()">-</button>
-        <input type="number" min="1" value="1" class="cantidad-producto">
-        <button onclick="this.previousElementSibling.stepUp()">+</button>
-      </div>
-      <button class="boton-compra" onclick="agregarAlCarrito('Chamarra de Mezclilla Clásica', 200, this)">Agregar al carrito</button>
-    </div>
-
-    <!-- Producto 6 -->
-    <div class="producto">
-      <img src="https://tse1.mm.bing.net/th/id/OIP.T6-zt9vj_1SA5i9ADDPm9QHaLH?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Vestido Negro">
-      <h3>Vestido Negro</h3>
-      <div class="precio">$210.00 MXN</div>
-      <div class="controles-cantidad">
-        <button onclick="this.nextElementSibling.stepDown()">-</button>
-        <input type="number" min="1" value="1" class="cantidad-producto">
-        <button onclick="this.previousElementSibling.stepUp()">+</button>
-      </div>
-      <button class="boton-compra" onclick="agregarAlCarrito('Vestido Negro', 210, this)">Agregar al carrito</button>
-    </div>
-  </div>
-</section>
-
-<section id="ofertas">
-  <h2>Ofertas Especiales</h2>
-  <p>Aprovecha descuentos únicos por temporada. ¡Renueva tu clóset hoy!</p>
-</section>
-
-<section id="contacto">
-  <h2>Contáctanos</h2>
-  <p>Nombre: Miguel Ángel León Faustino</p>
-  <p>Teléfono: 7223964174</p>
-  <p>Email: contacto@mibescloset.com</p>
-</section>
-
-<!-- Apartado de Carrito -->
-<section id="carrito">
-  <h2>Tu Carrito</h2>
-  <div id="items-carrito">
-    <p class="carrito-vacio">El carrito está vacío</p>
-  </div>
-  <div id="total-carrito">Total: $0.00 MXN</div>
-  <button id="realizar-compra" onclick="realizarCompra()">Realizar Compra</button>
-</section>
-
-<script>
-  let carrito = [];
-
-  function agregarAlCarrito(nombre, precio, boton) {
-    const cantidadInput = boton.parentElement.querySelector('.cantidad-producto');
-    const cantidad = parseInt(cantidadInput.value);
-    const productoExistente = carrito.find(item => item.nombre === nombre);
-
-    if (productoExistente) {
-      productoExistente.cantidad += cantidad;
-    } else {
-      carrito.push({ nombre, precio, cantidad });
-    }
-
-    actualizarCarrito();
-    alert(`Se agregaron ${cantidad} ${nombre} al carrito`);
-    cantidadInput.value = 1;
-  }
-
-  function actualizarCarrito() {
-    const itemsCarrito = document.getElementById('items-carrito');
-    const totalCarrito = document.getElementById('total-carrito');
-    const contadorCarrito = document.getElementById('contador-carrito');
-
-    itemsCarrito.innerHTML = '';
-    let total = 0;
-    let cantidadTotal = 0;
-
-    if (carrito.length === 0) {
-      itemsCarrito.innerHTML = '<p class="carrito-vacio">El carrito está vacío</p>';
-      totalCarrito.textContent = 'Total: $0.00 MXN';
-      contadorCarrito.textContent = '0';
-      return;
-    }
-
-    carrito.forEach((producto, index) => {
-      const subtotal = producto.precio * producto.cantidad;
-      total += subtotal;
-      cantidadTotal += producto.cantidad;
-
-      const itemElement = document.createElement('div');
-      itemElement.className = 'item-carrito';
-      itemElement.innerHTML = `
-        <div class="item-info">
-          <strong>${producto.nombre}</strong><br>
-          ${producto.cantidad} unidades<br>
-          $${producto.precio.toFixed(2)} c/u
+  <section id="productos">
+    <div class="productos-container">
+      <!-- Producto 1 -->
+      <div class="producto">
+        <img src="https://58532.cdn.simplo7.net/static/58532/sku/feminino-camisa-feminina-social-manga-longa-listrada-1737741301685.jpg" alt="Camisa Mujer">
+        <h3>Camisa Mujer</h3>
+        <div class="precio">$160.00 MXN</div>
+        <div class="controles-cantidad">
+          <button onclick="this.nextElementSibling.stepDown()">-</button>
+          <input type="number" min="1" value="1" class="cantidad-producto">
+          <button onclick="this.previousElementSibling.stepUp()">+</button>
         </div>
-        <button class="boton-eliminar" onclick="eliminarDelCarrito(${index})">X</button>
-      `;
-      itemsCarrito.appendChild(itemElement);
-    });
+        <button class="boton-compra" onclick="agregarAlCarrito('Camisa Mujer', 160, this)">Agregar al carrito</button>
+      </div>
 
-    totalCarrito.textContent = `Total: $${total.toFixed(2)} MXN`;
-    contadorCarrito.textContent = cantidadTotal;
-  }
+      <!-- Producto 2 -->
+      <div class="producto">
+        <img src="https://www.elpalaciodehierro.com/dw/image/v2/BDKB_PRD/on/demandware.static/-/Sites-palacio-master-catalog/default/dw824c1534/images/40523044/negro/large/40523044_x1.jpg?sw=960&sh=1152" alt="Chamarra">
+        <h3>Chamarra</h3>
+        <div class="precio">$170.00 MXN</div>
+        <div class="controles-cantidad">
+          <button onclick="this.nextElementSibling.stepDown()">-</button>
+          <input type="number" min="1" value="1" class="cantidad-producto">
+          <button onclick="this.previousElementSibling.stepUp()">+</button>
+        </div>
+        <button class="boton-compra" onclick="agregarAlCarrito('Chamarra', 170, this)">Agregar al carrito</button>
+      </div>
 
-  function eliminarDelCarrito(index) {
-    carrito.splice(index, 1);
-    actualizarCarrito();
-  }
+      <!-- Producto 3 -->
+      <div class="producto">
+        <img src="https://www.pimkie.fr/cdn/shop/files/142495_A90G09_portrait_HD_2_15ea0ffc-7f66-40f0-9ab3-06145247844e.jpg?v=1751257260&width=640" alt="Pantalón">
+        <h3>Pantalón</h3>
+        <div class="precio">$180.00 MXN</div>
+        <div class="controles-cantidad">
+          <button onclick="this.nextElementSibling.stepDown()">-</button>
+          <input type="number" min="1" value="1" class="cantidad-producto">
+          <button onclick="this.previousElementSibling.stepUp()">+</button>
+        </div>
+        <button class="boton-compra" onclick="agregarAlCarrito('Pantalón', 180, this)">Agregar al carrito</button>
+      </div>
 
-  function realizarCompra() {
-    if (carrito.length === 0) {
-      alert('El carrito está vacío');
-      return;
-    }
+      <!-- Producto 4 -->
+      <div class="producto">
+        <img src="https://st.mngbcn.com/rcs/pics/static/T4/fotos/S20/47095876_88.jpg?ts=1680506727470&imwidth=337&imdensity=2&impolicy=featured" alt="Vestido Largo de Fiesta">
+        <h3>Vestido Largo de Fiesta</h3>
+        <div class="precio">$190.00 MXN</div>
+        <div class="controles-cantidad">
+          <button onclick="this.nextElementSibling.stepDown()">-</button>
+          <input type="number" min="1" value="1" class="cantidad-producto">
+          <button onclick="this.previousElementSibling.stepUp()">+</button>
+        </div>
+        <button class="boton-compra" onclick="agregarAlCarrito('Vestido Largo de Fiesta', 190, this)">Agregar al carrito</button>
+      </div>
 
-    let resumen = 'Resumen de tu compra:\n\n';
-    let total = 0;
+      <!-- Producto 5 -->
+      <div class="producto">
+        <img src="https://www.elpalaciodehierro.com/on/demandware.static/-/Sites-palacio-master-catalog/default/dwcb48ecd7/images/40608277/azulclaro/large/40608278_AZULCLARO_x1.jpg" alt="Chamarra de Mezclilla Clásica">
+        <h3>Chamarra de Mezclilla Clásica</h3>
+        <div class="precio">$200.00 MXN</div>
+        <div class="controles-cantidad">
+          <button onclick="this.nextElementSibling.stepDown()">-</button>
+          <input type="number" min="1" value="1" class="cantidad-producto">
+          <button onclick="this.previousElementSibling.stepUp()">+</button>
+        </div>
+        <button class="boton-compra" onclick="agregarAlCarrito('Chamarra de Mezclilla Clásica', 200, this)">Agregar al carrito</button>
+      </div>
 
-    carrito.forEach(producto => {
-      const subtotal = producto.precio * producto.cantidad;
-      total += subtotal;
-      resumen += `${producto.cantidad} x ${producto.nombre} = $${subtotal.toFixed(2)}\n`;
-    });
+      <!-- Producto 6 -->
+      <div class="producto">
+        <img src="https://tse1.mm.bing.net/th/id/OIP.T6-zt9vj_1SA5i9ADDPm9QHaLH?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Vestido Negro">
+        <h3>Vestido Negro</h3>
+        <div class="precio">$210.00 MXN</div>
+        <div class="controles-cantidad">
+          <button onclick="this.nextElementSibling.stepDown()">-</button>
+          <input type="number" min="1" value="1" class="cantidad-producto">
+          <button onclick="this.previousElementSibling.stepUp()">+</button>
+        </div>
+        <button class="boton-compra" onclick="agregarAlCarrito('Vestido Negro', 210, this)">Agregar al carrito</button>
+      </div>
+    </div>
+  </section>
 
-    resumen += `\nTotal: $${total.toFixed(2)} MXN`;
+  <section id="ofertas">
+    <h2>Ofertas Especiales</h2>
+    <p>Aprovecha descuentos únicos por temporada. ¡Renueva tu clóset hoy!</p>
+  </section>
 
-    if (confirm(`${resumen}\n\n¿Deseas confirmar la compra?`)) {
-      alert('¡Compra realizada con éxito!');
-      carrito = [];
+  <section id="carrito">
+    <h2>Tu Carrito</h2>
+    <div id="items-carrito">
+      <p class="carrito-vacio">El carrito está vacío</p>
+    </div>
+    <div id="total-carrito">Total: $0.00 MXN</div>
+    <button id="realizar-compra" onclick="realizarCompra()">Realizar Compra</button>
+  </section>
+
+  <script>
+    let carrito = [];
+
+    function agregarAlCarrito(nombre, precio, boton) {
+      const cantidadInput = boton.parentElement.querySelector('.cantidad-producto');
+      const cantidad = parseInt(cantidadInput.value);
+
+      const productoExistente = carrito.find(item => item.nombre === nombre);
+      if (productoExistente) {
+        productoExistente.cantidad += cantidad;
+      } else {
+        carrito.push({ nombre, precio, cantidad });
+      }
+
+      cantidadInput.value = 1;
       actualizarCarrito();
     }
-  }
-</script>
 
+    function actualizarCarrito() {
+      const itemsCarrito = document.getElementById('items-carrito');
+      const totalCarrito = document.getElementById('total-carrito');
+      const contadorCarrito = document.getElementById('contador-carrito');
+
+      itemsCarrito.innerHTML = '';
+      let total = 0;
+      let cantidadTotal = 0;
+
+      if (carrito.length === 0) {
+        itemsCarrito.innerHTML = '<p class="carrito-vacio">El carrito está vacío</p>';
+        totalCarrito.textContent = 'Total: $0.00 MXN';
+        contadorCarrito.textContent = '0';
+        return;
+      }
+
+      carrito.forEach((producto, index) => {
+        const subtotal = producto.precio * producto.cantidad;
+        total += subtotal;
+        cantidadTotal += producto.cantidad;
+
+        const itemElement = document.createElement('div');
+        itemElement.className = 'item-carrito';
+        itemElement.innerHTML = `
+          <strong>${producto.nombre}</strong> - ${producto.cantidad} unidades<br>$${producto.precio.toFixed(2)} c/u
+          <button onclick="eliminarDelCarrito(${index})">Eliminar</button>
+          <hr>
+        `;
+        itemsCarrito.appendChild(itemElement);
+      });
+
+      totalCarrito.textContent = `Total: $${total.toFixed(2)} MXN`;
+      contadorCarrito.textContent = cantidadTotal;
+    }
+
+    function eliminarDelCarrito(index) {
+      carrito.splice(index, 1);
+      actualizarCarrito();
+    }
+
+    function realizarCompra() {
+      if (carrito.length === 0) {
+        alert('El carrito está vacío');
+        return;
+      }
+
+      let resumen = 'Resumen de tu compra:\n\n';
+      let total = 0;
+
+      carrito.forEach(producto => {
+        const subtotal = producto.precio * producto.cantidad;
+        total += subtotal;
+        resumen += `${producto.cantidad} x ${producto.nombre} = $${subtotal.toFixed(2)}\n`;
+      });
+
+      resumen += `\nTotal: $${total.toFixed(2)} MXN`;
+
+      if (confirm(`${resumen}\n\n¿Deseas confirmar la compra?`)) {
+        alert('¡Compra realizada con éxito!');
+        carrito = [];
+        actualizarCarrito();
+      }
+    }
+  </script>
 </body>
 </html>
