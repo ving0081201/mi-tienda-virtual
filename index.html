@@ -4,9 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Tu Clóset Virtual</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+<!-- Pantalla de Inicio de Sesión -->
+<div id="login-container">
+  <h2>Inicia Sesión</h2>
+  <input type="text" id="nombre" placeholder="Nombre" required />
+  <input type="email" id="correo" placeholder="Correo electrónico" required />
+  <button onclick="iniciarSesion()">Ingresar</button>
+</div>
+
+<!-- Contenido de la Tienda -->
+<div id="contenido" style="display: none;">
   <header>
     <h1>Tu Clóset Virtual</h1>
   </header>
@@ -16,13 +27,13 @@
       <li><a href="#inicio">Inicio</a></li>
       <li><a href="#productos">Productos</a></li>
       <li><a href="#ofertas">Ofertas</a></li>
-      <li><a href="#carrito">Ver Carrito (<span id="contador-carrito">0</span>)</a></li>
+      <li><a href="#carrito">Carrito (<span id="contador-carrito">0</span>)</a></li>
     </ul>
   </nav>
 
   <section id="inicio">
-    <h2>Bienvenido</h2>
-    <p>Explora tu estilo con las prendas más exclusivas para cada ocasión.</p>
+    <h2>Bienvenido a Tu Clóset Virtual</h2>
+    <p>Explora tu estilo con prendas exclusivas para cada ocasión.</p>
   </section>
 
   <section id="productos">
@@ -113,95 +124,25 @@
   </section>
 
   <section id="carrito">
-    <h2>Tu Carrito</h2>
+    <h2>Carrito de Compras</h2>
     <div id="items-carrito">
-      <p class="carrito-vacio">El carrito está vacío</p>
+      <p>El carrito está vacío.</p>
     </div>
     <div id="total-carrito">Total: $0.00 MXN</div>
     <button id="realizar-compra" onclick="realizarCompra()">Realizar Compra</button>
   </section>
 
-  <script>
-    let carrito = [];
+  <section id="contacto">
+    <h2>Contáctanos</h2>
+    <p>Nombre: Miguel Ángel León Faustino</p>
+    <p>Nombre: Esvida Pomposo García</p>
+    <p>Teléfono: 722-123-4567</p>
+    <p>Email: contacto@tuciosetvirtual.com</p>
+  </section>
+</div>
 
-    function agregarAlCarrito(nombre, precio, boton) {
-      const cantidadInput = boton.parentElement.querySelector('.cantidad-producto');
-      const cantidad = parseInt(cantidadInput.value);
+<!-- Script externo (puedes guardarlo como script.js) -->
+<script src="script.js"></script>
 
-      const productoExistente = carrito.find(item => item.nombre === nombre);
-      if (productoExistente) {
-        productoExistente.cantidad += cantidad;
-      } else {
-        carrito.push({ nombre, precio, cantidad });
-      }
-
-      cantidadInput.value = 1;
-      actualizarCarrito();
-    }
-
-    function actualizarCarrito() {
-      const itemsCarrito = document.getElementById('items-carrito');
-      const totalCarrito = document.getElementById('total-carrito');
-      const contadorCarrito = document.getElementById('contador-carrito');
-
-      itemsCarrito.innerHTML = '';
-      let total = 0;
-      let cantidadTotal = 0;
-
-      if (carrito.length === 0) {
-        itemsCarrito.innerHTML = '<p class="carrito-vacio">El carrito está vacío</p>';
-        totalCarrito.textContent = 'Total: $0.00 MXN';
-        contadorCarrito.textContent = '0';
-        return;
-      }
-
-      carrito.forEach((producto, index) => {
-        const subtotal = producto.precio * producto.cantidad;
-        total += subtotal;
-        cantidadTotal += producto.cantidad;
-
-        const itemElement = document.createElement('div');
-        itemElement.className = 'item-carrito';
-        itemElement.innerHTML = `
-          <strong>${producto.nombre}</strong> - ${producto.cantidad} unidades<br>$${producto.precio.toFixed(2)} c/u
-          <button onclick="eliminarDelCarrito(${index})">Eliminar</button>
-          <hr>
-        `;
-        itemsCarrito.appendChild(itemElement);
-      });
-
-      totalCarrito.textContent = `Total: $${total.toFixed(2)} MXN`;
-      contadorCarrito.textContent = cantidadTotal;
-    }
-
-    function eliminarDelCarrito(index) {
-      carrito.splice(index, 1);
-      actualizarCarrito();
-    }
-
-    function realizarCompra() {
-      if (carrito.length === 0) {
-        alert('El carrito está vacío');
-        return;
-      }
-
-      let resumen = 'Resumen de tu compra:\n\n';
-      let total = 0;
-
-      carrito.forEach(producto => {
-        const subtotal = producto.precio * producto.cantidad;
-        total += subtotal;
-        resumen += `${producto.cantidad} x ${producto.nombre} = $${subtotal.toFixed(2)}\n`;
-      });
-
-      resumen += `\nTotal: $${total.toFixed(2)} MXN`;
-
-      if (confirm(`${resumen}\n\n¿Deseas confirmar la compra?`)) {
-        alert('¡Compra realizada con éxito!');
-        carrito = [];
-        actualizarCarrito();
-      }
-    }
-  </script>
 </body>
 </html>
